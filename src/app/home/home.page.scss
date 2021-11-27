@@ -25,3 +25,52 @@
 #container a {
   text-decoration: none;
 }
+
+.main-tollbar{
+  --background: #7ac58c;
+  text-align: center;
+}
+
+#main-title{
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+#main-text h1{
+  text-align: center;
+
+}
+
+ion-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.scroll {
+  height: 100%;
+}
+
+ion-card-header {
+  text-align: center;
+}
+
+#main-logo{
+  width: auto;
+  height: 150px;
+}
+
+#phrase-title{
+  font-weight: bolder;
+  font-size: large;
+}
+
+#phrase-content{
+  font-style: italic;
+}
+
+ion-card-content{
+  text-align: center;
+}

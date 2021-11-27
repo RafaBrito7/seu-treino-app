@@ -1,20 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
+<ion-header>
+  <ion-toolbar class="main-tollbar">
+    <ion-title id="main-title">
+      Seu Treino APP
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <ion-card class="main-content">
+    <ion-card-header>
+      <img src="../../assets/images/logo.png" alt="seu-treino-logo" id="main-logo">
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div id="main-text">
+        <h1>Bem Vindo!</h1>
+      </div>
+      <div>
+        <ion-button expand="block" type="submit" (click)="goToLogin()">Vamos Treinar!</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card>
+    <ion-card-header id="phrase-title">
+      Frase do Dia:
+    </ion-card-header>
+    <ion-card-content>
+      <ion-spinner name="crescent"></ion-spinner>
+      <blockquote id="phrase-content">"{{phrase}}"</blockquote>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
