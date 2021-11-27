@@ -5,5 +5,24 @@
 </ion-header>
 
 <ion-content>
-
+  <div>
+    <ion-card class="main-content">
+      <ion-card-header>
+        <img src="../../assets/images/logo.png" alt="seu-treino-logo" id="main-logo">
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input type="text" [value]="user" (input)="setUser($event)"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input type="password" [value]="password" (input)="setPassword($event)"></ion-input>
+        </ion-item>
+        <ion-button color="success" size="full" (click)="login()">Login</ion-button>
+        <ion-button size="small" (click)="goToCreateUser()"><small>Criar uma nova conta</small></ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
