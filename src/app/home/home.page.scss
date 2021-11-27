@@ -49,6 +49,10 @@ ion-content{
   height: 100vh;
 }
 
+.main-content{
+  margin-top: 50px;
+}
+
 .scroll {
   height: 100%;
 }
@@ -65,12 +69,19 @@ ion-card-header {
 #phrase-title{
   font-weight: bolder;
   font-size: large;
+  text-align: center;
 }
 
 #phrase-content{
   font-style: italic;
+  text-align: justify;
 }
 
-ion-card-content{
+.content-div{
+  font-style: italic;
   text-align: center;
+}
+
+.container{
+  margin-top: 50px;
 }

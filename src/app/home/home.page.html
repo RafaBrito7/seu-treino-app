@@ -21,13 +21,14 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
-    <ion-card-header id="phrase-title">
+  <div class="container">
+    <div id="phrase-title">
       Frase do Dia:
-    </ion-card-header>
-    <ion-card-content>
-      <ion-spinner name="crescent"></ion-spinner>
-      <blockquote id="phrase-content">"{{phrase}}"</blockquote>
-    </ion-card-content>
-  </ion-card>
+    </div>
+    <div class="content-div">
+      <ion-spinner name="crescent" [hidden]="!loadingPhrase"></ion-spinner>
+      <blockquote id="phrase-content" [hidden]="loadingPhrase">"{{phrase.text}}"</blockquote>
+      <span [hidden]="loadingPhrase">{{phrase.author}}</span>
+    </div>
+  </div>
 </ion-content>
