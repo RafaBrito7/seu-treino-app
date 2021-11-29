@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ionic-seutreino-app": {
+      "hosting": {
+        "app": [
+          "ionic-seutreino-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ionic-seutreino-app"
+  }
+}

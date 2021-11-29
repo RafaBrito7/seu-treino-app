@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-user.page.scss'],
 })
 export class CreateUserPage implements OnInit {
-  constructor(private route: Router) {}
+  constructor(private route: Router) {
+  }
 
   name: string;
   date: Date;

@@ -19,39 +19,39 @@
   <ion-card-content>
     <ion-item>
       <ion-label position="floating">Nome:</ion-label>
-      <ion-input type="text" [(ngModel)]="name"></ion-input>
+      <ion-input type="text" [(ngModel)]="name" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Data Nascimento:</ion-label>
-      <ion-input type="date" [(ngModel)]="date"></ion-input>
+      <ion-input type="date" required [(ngModel)]="date"></ion-input>
     </ion-item>
     <ion-item>
       <ion-grid>
         <ion-row>
           <ion-col size-sm>
             <ion-label position="floating">Peso(kg):</ion-label>
-            <ion-input type="number" min="1" max="500" [(ngModel)]="weight"></ion-input>
+            <ion-input type="number" required min="1" max="500" [(ngModel)]="weight"></ion-input>
           </ion-col>
           <ion-col></ion-col>
           <ion-col size-sm>
             <ion-label position="floating">Altura(cm):</ion-label>
-            <ion-input type="number" [(ngModel)]="height"></ion-input>
+            <ion-input type="number" required [(ngModel)]="height"></ion-input>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Email:</ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
+      <ion-input type="email" required [(ngModel)]="email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Login:</ion-label>
-      <ion-input type="text" [(ngModel)]="login"></ion-input>
+      <ion-input type="text" required [(ngModel)]="login"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Senha</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" required [(ngModel)]="password"></ion-input>
     </ion-item>
-    <ion-button color="success" size="full" (click)="createUser()">Criar</ion-button>
+    <ion-button color="success" required size="full" (click)="createUser()">Criar</ion-button>
   </ion-card-content>  
 </ion-content>
