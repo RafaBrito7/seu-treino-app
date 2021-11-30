@@ -22,35 +22,29 @@
       <ion-input type="text" [(ngModel)]="name" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Data Nascimento:</ion-label>
-      <ion-input type="date" required [(ngModel)]="date"></ion-input>
+      <ion-label>Dias da Semana:</ion-label>
+      <ion-select multiple="true" cancelText="Cancelar" okText="Ok" [(ngModel)]="selectedDays">
+        <ion-select-option value="Segunda-Feira">Segunda-Feira</ion-select-option>
+        <ion-select-option value="Terça-Feira">Terça-Feira</ion-select-option>
+        <ion-select-option value="Quarta-Feira">Quarta-Feira</ion-select-option>
+        <ion-select-option value="Quinta-Feira">Quinta-Feira</ion-select-option>
+        <ion-select-option value="Sexta-Feira">Sexta-Feira</ion-select-option>
+        <ion-select-option value="Sábado">Sábado</ion-select-option>
+        <ion-select-option value="Domingo">Domingo</ion-select-option>
+      </ion-select>
     </ion-item>
+
     <ion-item>
-      <ion-grid>
-        <ion-row>
-          <ion-col size-sm>
-            <ion-label position="floating">Peso(kg):</ion-label>
-            <ion-input type="number" required min="1" max="500" [(ngModel)]="weight"></ion-input>
-          </ion-col>
-          <ion-col></ion-col>
-          <ion-col size-sm>
-            <ion-label position="floating">Altura(cm):</ion-label>
-            <ion-input type="number" required [(ngModel)]="height"></ion-input>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <ion-label>Criar Novo Exercício:</ion-label>
+      <ion-button (click)="showExerciseCard()"><ion-icon name="add-outline"></ion-icon></ion-button>
+
     </ion-item>
+    
     <ion-item>
-      <ion-label position="floating">Email:</ion-label>
-      <ion-input type="email" required [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Login:</ion-label>
-      <ion-input type="text" required [(ngModel)]="login"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Senha</ion-label>
-      <ion-input type="password" required [(ngModel)]="password"></ion-input>
+      <ion-label>Exercício:</ion-label>
+      <ion-select placeholder="Selecione um" *ngFor="let exercise of exercises">
+        <ion-select-option value="{{exercise.id}}">{{exercise.name}}</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-button color="success" required size="full" (click)="createUser()">Criar</ion-button>
   </ion-card-content>  
