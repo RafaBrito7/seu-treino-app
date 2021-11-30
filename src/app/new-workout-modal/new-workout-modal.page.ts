@@ -13,12 +13,48 @@ export class NewWorkoutModalPage implements OnInit {
     private modalController: ModalController,
     private exerciseService: ExerciseService) {}
 
+  showCreateExerciseModal: boolean = false;
   name: string;
   selectedDays: string[];
+
+  //Exercise Fields
   exercises: Exercise[];
+  exerciseCreated: Exercise = {
+    name: '',
+    weight: 0,
+    series: 0,
+    repetitions: 0
+  };
+
 
   ngOnInit() {
+    this.fetchExercises();
+  }
+
+  fetchExercises(){
     this.exerciseService.getExercises().subscribe(res => this.exercises = res);
+  }
+
+  showExerciseCard(){
+    if(this.showCreateExerciseModal){
+      this.showCreateExerciseModal = false;
+    }else{
+      this.showCreateExerciseModal = true;
+    }
+  }
+
+  createExercise(){
+    this.exerciseService.createExercise(this.exerciseCreated);
+    this.showExerciseCard();
+    this.cleanExerciseFields();
+    this.fetchExercises();
+  }
+
+  cleanExerciseFields(){
+    this.exerciseCreated.name = '';
+    this.exerciseCreated.weight = 0;
+    this.exerciseCreated.series = 0;
+    this.exerciseCreated.repetitions = 0;
   }
 
   cancel() {

@@ -36,14 +36,41 @@
 
     <ion-item>
       <ion-label>Criar Novo Exercício:</ion-label>
-      <ion-button (click)="showExerciseCard()"><ion-icon name="add-outline"></ion-icon></ion-button>
+      <ion-button (click)="showExerciseCard()" color="success" [hidden]="showCreateExerciseModal"><ion-icon name="add-outline"></ion-icon></ion-button>
+      <ion-button (click)="showExerciseCard()" color="danger" [hidden]="!showCreateExerciseModal"><ion-icon name="close-outline"></ion-icon></ion-button>
+    </ion-item>
 
+    <ion-item [hidden]="!showCreateExerciseModal">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Crie um novo Exercício</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Nome:</ion-label>
+            <ion-input type="text" [(ngModel)]="exerciseCreated.name" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Séries:</ion-label>
+            <ion-input type="number" [(ngModel)]="exerciseCreated.series" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Repetições:</ion-label>
+            <ion-input type="number" [(ngModel)]="exerciseCreated.repetion" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Peso:</ion-label>
+            <ion-input type="number" [(ngModel)]="exerciseCreated.weight" required></ion-input>
+          </ion-item>
+          <ion-button size="small" (click)="createExercise()"><small>Criar Exercício</small></ion-button>
+        </ion-card-content>
+      </ion-card>
     </ion-item>
     
     <ion-item>
       <ion-label>Exercício:</ion-label>
-      <ion-select placeholder="Selecione um" *ngFor="let exercise of exercises">
-        <ion-select-option value="{{exercise.id}}">{{exercise.name}}</ion-select-option>
+      <ion-select cancelText="Cancelar" okText="Ok">
+        <ion-select-option *ngFor="let exer of exercises" value="{{exer.name}}">{{exer.name}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-button color="success" required size="full" (click)="createUser()">Criar</ion-button>

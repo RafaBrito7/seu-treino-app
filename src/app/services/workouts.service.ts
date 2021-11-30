@@ -15,13 +15,13 @@ export class WorkoutsService {
   constructor(private firestore: Firestore) { }
 
   getWorkouts(): Observable<Workout[]> {
-    const contactsCollection = collection(this.firestore, 'workouts');
-    return collectionData(contactsCollection, { idField: 'id' }).pipe(
+    const elementCollection = collection(this.firestore, 'workouts');
+    return collectionData(elementCollection, { idField: 'id' }).pipe(
       map((workouts) => workouts as Workout[])
     );
   }
 
-  createUser(user: Workout): Promise<void> {
+  createWorkout(user: Workout): Promise<void> {
     const document = doc(collection(this.firestore, 'workouts'));
     return setDoc(document, user);
   }

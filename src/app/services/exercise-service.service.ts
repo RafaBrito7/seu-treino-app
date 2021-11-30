@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { collection } from '@firebase/firestore';
+import { collection, doc, setDoc } from '@firebase/firestore';
 import { collectionData } from 'rxfire/firestore';
 import { Observable } from 'rxjs';
 import { Exercise } from '../model/exercise';
@@ -19,5 +19,10 @@ export class ExerciseService {
     return collectionData(elementCollection, { idField: 'id' }).pipe(
       map((exercise) => exercise as Exercise[])
     );
+  }
+
+  createExercise(exercise: Exercise): Promise<void> {
+    const document = doc(collection(this.firestore, 'exercises'));
+    return setDoc(document, exercise);
   }
 }
