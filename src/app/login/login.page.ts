@@ -17,6 +17,8 @@ export class LoginPage implements OnInit {
   users: User[] = [];
   isUserValid: boolean = false;
 
+  id: string;
+
 
   constructor(
     private route: Router,
@@ -43,6 +45,8 @@ export class LoginPage implements OnInit {
       this.prepareInputsIgnoreCase();
       if(us.login.toLowerCase() == this.login && us.password.toLowerCase() == this.password){
         this.isUserValid = true;
+        this.id = us.id;
+        window.sessionStorage.setItem("userLogin", JSON.stringify(us));
         return;
       }
     });

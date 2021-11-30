@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import { docSnapshots, Firestore } from '@angular/fire/firestore';
 import { collection, doc, setDoc } from '@firebase/firestore';
 import { collectionData } from 'rxfire/firestore';
 import { Observable } from 'rxjs';
@@ -24,4 +24,14 @@ export class UserService {
     const document = doc(collection(this.firestore, 'users'));
     return setDoc(document, user);
   }
+
+  getUserById(id: number): Observable<User[]>{
+    const contactsCollection = collection(this.firestore, 'users');
+    let response = collectionData(contactsCollection, { idField: 'id' }).pipe(
+      map((users) => users as User[])
+    );
+    debugger;
+    return response;
+  }
+    
 }
