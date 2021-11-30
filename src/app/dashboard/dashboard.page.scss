@@ -16,3 +16,14 @@
 .button-create-workout{
     margin-bottom: 15px;
 }
+
+#close-button{
+    text-align: right;
+    margin-right: 15px;
+}
+
+#main-title{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}

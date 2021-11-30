@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { IonRouterOutlet, ModalController } from '@ionic/angular';
 import { User } from '../create-user/model/user-model';
 import { Workout } from '../model/workout';
@@ -17,7 +17,7 @@ export class DashboardPage implements OnInit {
   constructor(
     private workoutService: WorkoutsService, 
     private activeRoute: ActivatedRoute,
-    private userService: UserService,
+    private route: Router,
     private modalController: ModalController,
     private routerOutlet: IonRouterOutlet) { 
     this.id = this.activeRoute.snapshot.paramMap.get('id');
@@ -38,6 +38,11 @@ export class DashboardPage implements OnInit {
 
   reloadWorkouts(){
     this.fetchWorkouts();
+  }
+
+  logout(){
+    window.sessionStorage.clear();
+    this.route.navigate(['/home']);
   }
 
   async openNewWorkoutModal() {
