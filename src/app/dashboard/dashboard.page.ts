@@ -44,7 +44,10 @@ export class DashboardPage implements OnInit {
     const modal = await this.modalController.create({
       component: NewWorkoutModalPage,
       swipeToClose: true,
-      presentingElement: this.routerOutlet.nativeEl
+      presentingElement: this.routerOutlet.nativeEl,
+      showBackdrop: true,
+      backdropDismiss: true,
+      animated: true
     });
   
     return await modal.present();

@@ -1,9 +1,57 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>new-workout-modal</ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col id="main-title">
+          <ion-title>Criar Novo Treino</ion-title>
+        </ion-col>
+        <ion-col id="close-button">
+          <ion-button (click)="cancel()">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card-content>
+    <ion-item>
+      <ion-label position="floating">Nome:</ion-label>
+      <ion-input type="text" [(ngModel)]="name" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Data Nascimento:</ion-label>
+      <ion-input type="date" required [(ngModel)]="date"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col size-sm>
+            <ion-label position="floating">Peso(kg):</ion-label>
+            <ion-input type="number" required min="1" max="500" [(ngModel)]="weight"></ion-input>
+          </ion-col>
+          <ion-col></ion-col>
+          <ion-col size-sm>
+            <ion-label position="floating">Altura(cm):</ion-label>
+            <ion-input type="number" required [(ngModel)]="height"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email:</ion-label>
+      <ion-input type="email" required [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Login:</ion-label>
+      <ion-input type="text" required [(ngModel)]="login"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" required [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-button color="success" required size="full" (click)="createUser()">Criar</ion-button>
+  </ion-card-content>  
 </ion-content>
