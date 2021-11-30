@@ -34,12 +34,12 @@ export class LoginPage implements OnInit {
       this.cleanInputs();
     }else{
       alert("Usuário Validado!");
+      this.goToDashboard();
     }
   }
 
   validateUser(){
     this.users.forEach(us => {
-      debugger;
       this.prepareInputsIgnoreCase();
       if(us.login.toLowerCase() == this.login && us.password.toLowerCase() == this.password){
         this.isUserValid = true;
@@ -64,6 +64,10 @@ export class LoginPage implements OnInit {
 
   goToCreateUser(){
     this.route.navigate(['/create-user']);
+  }
+
+  goToDashboard(){
+    this.route.navigate(['/dashboard']);
   }
 
 }
