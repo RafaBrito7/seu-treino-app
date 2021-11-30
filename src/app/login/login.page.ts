@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../create-user/model/user-model';
+import { UserService } from '../user-service.service';
 
 @Component({
   selector: 'app-login',
@@ -9,39 +11,55 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  user: string = '';
-  password: string = '';
+  login: string;
+  password: string;
+
+  users: User[] = [];
+  isUserValid: boolean = false;
+
 
   constructor(
     private route: Router,
-    private http: HttpClient
+    private userService: UserService
   ) {}
 
-  ngOnInit(): void {}
-
-  setUser(value){
-    this.user = value.target.value;
+  ngOnInit(): void {
+    this.fetchUsers();
   }
 
-  setPassword(password){
-    this.password = password.target.value;
+  toLogin(){
+    this.validateUser();
+    if(!this.isUserValid){
+      alert("Usuário ou Senha inválido!");
+      this.cleanInputs();
+    }else{
+      alert("Usuário Validado!");
+    }
   }
 
-  login() {
-    console.log(this.user);
-    console.log(this.password);
-    this.http
-      .get(
-        `http://localhost:3000/login?user=${this.user}&password=${this.password}`
-      )
-      .subscribe((response) => {
-        if (!response) {
-          alert('Senha Incorreta! Tente novamente');
-        } else {
-          window.sessionStorage.setItem("user", this.user);
-          this.route.navigate(['/tabs']);
-        }
-      });
+  validateUser(){
+    this.users.forEach(us => {
+      debugger;
+      this.prepareInputsIgnoreCase();
+      if(us.login.toLowerCase() == this.login && us.password.toLowerCase() == this.password){
+        this.isUserValid = true;
+        return;
+      }
+    });
+  }
+
+  prepareInputsIgnoreCase(){
+    this.login = this.login.toLowerCase();
+    this.password = this.password.toLowerCase();
+  }
+
+  cleanInputs(){
+    this.login = '';
+    this.password = '';
+  }
+
+  fetchUsers() {
+    this.userService.getUsers().subscribe((val:any) => this.users = val);
   }
 
   goToCreateUser(){

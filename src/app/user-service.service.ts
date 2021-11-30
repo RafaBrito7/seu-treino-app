@@ -13,14 +13,14 @@ import { map, catchError } from 'rxjs/operators';
 export class UserService {
   constructor(private firestore: Firestore) {}
 
-  getContacts(): Observable<User[]> {
+  getUsers(): Observable<User[]> {
     const contactsCollection = collection(this.firestore, 'users');
     return collectionData(contactsCollection, { idField: 'id' }).pipe(
       map((users) => users as User[])
     );
   }
 
-  createContact(user: User): Promise<void> {
+  createUser(user: User): Promise<void> {
     const document = doc(collection(this.firestore, 'users'));
     return setDoc(document, user);
   }

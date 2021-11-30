@@ -31,9 +31,7 @@ export class CreateUserPage implements OnInit {
   login: string;
   password: string;
 
-  ngOnInit() {
-    this.userService.getContacts().subscribe((val:any) => console.log(val));
-  }
+  ngOnInit() {}
 
   setName(element) {
     this.user.name = element;
@@ -76,7 +74,7 @@ export class CreateUserPage implements OnInit {
 
   createUser(){
     this.prepareObjectToCreate();
-    this.userService.createContact(this.user);
+    this.userService.createUser(this.user);
     this.goToLogin();
   }
 
