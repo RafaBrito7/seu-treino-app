@@ -3,4 +3,5 @@ export class Exercise {
     repetitions: number;
     series: number;
     weight: number; 
+    id: string;
 }

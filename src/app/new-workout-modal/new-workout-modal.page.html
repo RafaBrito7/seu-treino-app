@@ -69,10 +69,10 @@
     
     <ion-item>
       <ion-label>Exercício:</ion-label>
-      <ion-select cancelText="Cancelar" okText="Ok">
-        <ion-select-option *ngFor="let exer of exercises" value="{{exer.name}}">{{exer.name}}</ion-select-option>
+      <ion-select cancelText="Cancelar" okText="Ok" [(ngModel)]="selectedExercise">
+        <ion-select-option *ngFor="let exer of exercises" value="{{exer.id}}">{{exer.name}}</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button color="success" required size="full" (click)="createUser()">Criar</ion-button>
+    <ion-button color="success" required size="full" (click)="createWorkout()">Criar Treino</ion-button>
   </ion-card-content>  
 </ion-content>

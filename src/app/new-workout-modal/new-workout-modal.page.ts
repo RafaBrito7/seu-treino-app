@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IonRouterOutlet, ModalController } from '@ionic/angular';
 import { Exercise } from '../model/exercise';
+import { Workout } from '../model/workout';
 import { ExerciseService } from '../services/exercise-service.service';
+import { WorkoutsService } from '../services/workouts.service';
 
 @Component({
   selector: 'app-new-workout-modal',
@@ -11,11 +13,20 @@ import { ExerciseService } from '../services/exercise-service.service';
 export class NewWorkoutModalPage implements OnInit {
   constructor(
     private modalController: ModalController,
-    private exerciseService: ExerciseService) {}
+    private exerciseService: ExerciseService,
+    private workoutService: WorkoutsService) {}
 
   showCreateExerciseModal: boolean = false;
+
+  //Workout Fields
   name: string;
   selectedDays: string[];
+  selectedExercise: string;
+  workoutCreated: Workout = {
+    name: '',
+    days: [],
+    exercise: null
+  }
 
   //Exercise Fields
   exercises: Exercise[];
@@ -23,7 +34,8 @@ export class NewWorkoutModalPage implements OnInit {
     name: '',
     weight: 0,
     series: 0,
-    repetitions: 0
+    repetitions: 0,
+    id: null
   };
 
 
@@ -55,6 +67,28 @@ export class NewWorkoutModalPage implements OnInit {
     this.exerciseCreated.weight = 0;
     this.exerciseCreated.series = 0;
     this.exerciseCreated.repetitions = 0;
+  }
+
+  createWorkout(){
+    this.prepareWorkoutToCreate();
+    debugger;
+    this.workoutService.createWorkout(this.workoutCreated);
+    alert("Treino Criado com Sucesso!")
+    this.cancel();
+  }
+
+  prepareWorkoutToCreate(){
+    this.workoutCreated.name = this.name;
+    this.workoutCreated.days = this.selectedDays;
+    this.findExerciseById();
+  }
+
+  findExerciseById(){
+    this.exercises.forEach(exerc => {
+      if(exerc.id == this.selectedExercise){
+        this.workoutCreated.exercise = exerc;
+      }
+    });
   }
 
   cancel() {
