@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
+  {
+    path: 'new-workout-modal',
+    loadChildren: () => import('./new-workout-modal/new-workout-modal.module').then( m => m.NewWorkoutModalPageModule)
+  },
 ];
 
 @NgModule({
