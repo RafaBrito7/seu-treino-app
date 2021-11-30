@@ -33,7 +33,7 @@ export class DashboardPage implements OnInit {
   }
 
   fetchWorkouts() {
-    this.workoutService.getWorkouts().subscribe(res => this.workouts = res);
+    this.workoutService.getWorkouts().subscribe(res => this.workouts = res.filter(r => r.user_id == this.user.appIdentifier));
   }
 
   reloadWorkouts(){

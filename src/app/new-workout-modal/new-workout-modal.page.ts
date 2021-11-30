@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonRouterOutlet, ModalController } from '@ionic/angular';
+import { User } from '../create-user/model/user-model';
 import { Exercise } from '../model/exercise';
 import { Workout } from '../model/workout';
 import { ExerciseService } from '../services/exercise-service.service';
@@ -18,6 +19,8 @@ export class NewWorkoutModalPage implements OnInit {
 
   showCreateExerciseModal: boolean = false;
 
+  user:User;
+
   //Workout Fields
   name: string;
   selectedDays: string[];
@@ -25,7 +28,8 @@ export class NewWorkoutModalPage implements OnInit {
   workoutCreated: Workout = {
     name: '',
     days: [],
-    exercise: null
+    exercise: null,
+    user_id: null
   }
 
   //Exercise Fields
@@ -71,7 +75,6 @@ export class NewWorkoutModalPage implements OnInit {
 
   createWorkout(){
     this.prepareWorkoutToCreate();
-    debugger;
     this.workoutService.createWorkout(this.workoutCreated);
     alert("Treino Criado com Sucesso!")
     this.cancel();
@@ -80,7 +83,11 @@ export class NewWorkoutModalPage implements OnInit {
   prepareWorkoutToCreate(){
     this.workoutCreated.name = this.name;
     this.workoutCreated.days = this.selectedDays;
+
     this.findExerciseById();
+
+    this.user = JSON.parse(window.sessionStorage.getItem("userLogin"));
+    this.workoutCreated.user_id = this.user.appIdentifier;
   }
 
   findExerciseById(){

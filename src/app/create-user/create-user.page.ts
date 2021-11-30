@@ -3,24 +3,28 @@ import { Router } from '@angular/router';
 import { UserService } from '../services/user-service.service';
 import { User } from './model/user-model';
 
+import {v4 as uuidv4} from 'uuid';
+
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.page.html',
   styleUrls: ['./create-user.page.scss'],
 })
 export class CreateUserPage implements OnInit {
-  constructor(private route: Router, private userService: UserService) {
+  constructor(private route: Router, 
+    private userService: UserService) {
   }
 
   user:User = {
-    id: '',
+    id: null,
     name: '',
     date: undefined,
     weight: 0,
     height: 0,
     email: '',
     login: '',
-    password: ''
+    password: '',
+    appIdentifier: ''
   };
 
   name: string;
@@ -61,12 +65,9 @@ export class CreateUserPage implements OnInit {
     this.user.password = element;
   }
 
-  /*
   setId(){
-    const crypto = require('crypto');
-    this.user.id = crypto.randomUUID();
+    this.user.appIdentifier = uuidv4();
   }
-  */
 
   goToLogin() {
     this.route.navigate(['/login']);
@@ -86,6 +87,6 @@ export class CreateUserPage implements OnInit {
     this.setEmail(this.email);
     this.setLogin(this.login);
     this.setPassword(this.password);
-    //this.setId();
+    this.setId();
   }
 }
