@@ -3,7 +3,7 @@ import { Firestore } from '@angular/fire/firestore';
 import { collection, doc, setDoc } from '@firebase/firestore';
 import { collectionData } from 'rxfire/firestore';
 import { Observable } from 'rxjs';
-import { User } from './create-user/model/user-model';
+import { User } from '../create-user/model/user-model';
 
 import { map, catchError } from 'rxjs/operators';
 

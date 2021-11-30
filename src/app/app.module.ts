@@ -6,7 +6,7 @@ import { ɵAngularFireSchedulers } from '@angular/fire';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
-import { UserService } from './user-service.service';
+import { UserService } from './services/user-service.service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
