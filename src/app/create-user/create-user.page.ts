@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../user-service.service';
+import { User } from './model/user-model';
 
 @Component({
   selector: 'app-create-user',
@@ -7,8 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-user.page.scss'],
 })
 export class CreateUserPage implements OnInit {
-  constructor(private route: Router) {
+  constructor(private route: Router, private userService: UserService) {
   }
+
+  user:User = {
+    id: '',
+    name: '',
+    date: undefined,
+    weight: 0,
+    height: 0,
+    email: '',
+    login: '',
+    password: ''
+  };
 
   name: string;
   date: Date;
@@ -18,50 +31,63 @@ export class CreateUserPage implements OnInit {
   login: string;
   password: string;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userService.getContacts().subscribe((val:any) => console.log(val));
+  }
 
   setName(element) {
-    this.name = element;
+    this.user.name = element;
   }
 
   setDate(element) {
-    this.date = element;
+    this.user.date = element;
   }
 
   setWeight(element) {
-    this.weight = element;
+    this.user.weight = element;
   }
 
   setHeight(element) {
-    this.height = element;
+    this.user.height = element;
   }
 
   setEmail(element) {
-    this.email = element;
+    this.user.email = element;
   }
 
   setLogin(element) {
-    this.login = element;
+    this.user.login = element;
   }
 
   setPassword(element) {
-    this.password = element;
+    this.user.password = element;
   }
+
+  /*
+  setId(){
+    const crypto = require('crypto');
+    this.user.id = crypto.randomUUID();
+  }
+  */
 
   goToLogin() {
     this.route.navigate(['/login']);
   }
 
   createUser(){
-    let user = {
-      "name": this.name,
-      "email": this.email,
-      "login": this.login,
-      "password": this.password,
-      "date": this.date,
-      "weight": this.weight,
-      "height": this.height
-    }
-    console.log(user);
+    this.prepareObjectToCreate();
+    this.userService.createContact(this.user);
+    this.goToLogin();
+  }
+
+  prepareObjectToCreate(){
+    this.setName(this.name);
+    this.setDate(this.date);
+    this.setWeight(this.weight);
+    this.setHeight(this.height);
+    this.setEmail(this.email);
+    this.setLogin(this.login);
+    this.setPassword(this.password);
+    //this.setId();
   }
 }
