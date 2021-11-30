@@ -6,13 +6,36 @@
 
 <ion-content>
   <ion-title id="main-titulo">
-    <h3 *ngIf="user">Olá, {{user.name}}!</h3>
-    Seus Treinos Salvos</ion-title>
-  <ion-list>
+    <h4 *ngIf="user">Olá, {{user.name}}!</h4>
+  </ion-title>
+  <div class="align-text">
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="openNewWorkoutModal()">
+          <ion-icon name="add-outline"></ion-icon>
+          <small> Novo Treino</small>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="reloadWorkouts()">
+          <ion-icon name="reload-outline"> </ion-icon>
+          <small> Recarregar</small>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <h3>Seus Treinos Salvos</h3>
+  </div>
+  <ion-list *ngIf="workouts">
     <div *ngFor="let workout of workouts">
-      <ion-item>
-        <ion-label>{{workout.name}}</ion-label>
+      <ion-item button (click)="buttonClick()">
+        <ion-label>
+          {{workout.name}}
+        </ion-label>
       </ion-item>
     </div>
   </ion-list>
+  <div *ngIf="workouts.length == 0">
+
+  </div>
+ 
 </ion-content>
