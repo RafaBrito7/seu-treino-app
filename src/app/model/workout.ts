@@ -5,4 +5,5 @@ export class Workout {
     days: string[];
     exercise: Exercise;
     user_id: string;
+    id: string;
 }

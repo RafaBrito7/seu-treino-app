@@ -38,7 +38,7 @@
   </div>
   <ion-list *ngIf="workouts">
     <div *ngFor="let workout of workouts">
-      <ion-item button (click)="buttonClick()">
+      <ion-item button (click)="gotToWorkoutPage(workout)">
         <ion-label>
           {{workout.name}}
         </ion-label>

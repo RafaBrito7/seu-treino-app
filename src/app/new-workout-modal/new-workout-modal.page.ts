@@ -29,7 +29,8 @@ export class NewWorkoutModalPage implements OnInit {
     name: '',
     days: [],
     exercise: null,
-    user_id: null
+    user_id: null,
+    id: null
   }
 
   //Exercise Fields

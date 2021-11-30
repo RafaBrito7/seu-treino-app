@@ -58,4 +58,8 @@ export class DashboardPage implements OnInit {
     return await modal.present();
   }
 
+  gotToWorkoutPage(workout:Workout){
+    this.route.navigate(['/workout/' + workout.id]);
+  }
+
 }

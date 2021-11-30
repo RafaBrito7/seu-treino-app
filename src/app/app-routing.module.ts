@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'new-workout-modal',
     loadChildren: () => import('./new-workout-modal/new-workout-modal.module').then( m => m.NewWorkoutModalPageModule)
   },
+  {
+    path: 'workout/:id',
+    loadChildren: () => import('./workout-page/workout-page.module').then( m => m.WorkoutPagePageModule)
+  },
 ];
 
 @NgModule({
